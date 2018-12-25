@@ -1,7 +1,5 @@
 package clients
 
-//https://golangcode.com/uploading-a-file-to-s3/
-// https://medium.com/@questhenkart/s3-image-uploads-via-aws-sdk-with-golang-63422857c548
 import (
 	"fmt"
 	"strconv"
