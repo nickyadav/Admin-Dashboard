@@ -1,0 +1,92 @@
+{{ template "layout/main.html" . }}
+
+{{ define "pageTitle" }}{{.title}} | Profile {{ end}}
+
+{{ define "content" }}
+<section class="content-header">
+    <h1>
+        Profile
+    </h1>
+    <div class="pull-right"><a href="{{urlfor "AccountController.Index"}}"> Back to User List</a></div>
+        <br>
+</section>
+<section class="content">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="box box-primary">
+            <form method="post">
+                <div class="box-body">
+                <div class="card-body">
+                    {{ .xsrfdata }}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="hidden" name="user_id" value="{{ .data.user_id }}">
+                                <strong><label for="username">Name: </label></strong>
+                                <span>{{ .data.username }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <strong><label for="role_id">Role: </label></strong>
+                            <span>{{.data.role_name}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <strong><label for="user_fullname">User Full Name</label></strong>
+                                <input type="text" class="form-control" maxlength="200" required id="user_fullname"
+                                        name="user_fullname" placeholder="Enter User Full Name"
+                                        value="{{ .data.user_fullname }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <strong><label for="email">User Email Id</label></strong>
+                                <input type="email" class="form-control" maxlength="200" required id="email"
+                                        name="email" placeholder="Enter Email Id" value="{{ .data.email }}">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <strong><label for="oldPassword">Old Password</label></strong>
+                                <input type="password" class="form-control" maxlength="20" required id="oldPassword"
+                                        name="oldPassword" placeholder="Enter Old Password" value="{{ .data.oldPassword }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <strong><label for="newPassword">New Password</label></strong>
+                                <input type="password" class="form-control" maxlength="20" required id="newPassword"
+                                        name="newPassword" placeholder="Enter New Password" value="{{ .data.newPassword }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <strong><label for="confirmPassword">Confirm Password</label></strong>
+                                <input type="password" class="form-control" maxlength="20" required id="confirmPassword"
+                                        name="confirmPassword" placeholder="Confirm Password" value="{{ .data.confirmPassword }}" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Update Password
+                    </button>
+                    <!--<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>-->
+                </div>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+</section>
+{{ end }}
+

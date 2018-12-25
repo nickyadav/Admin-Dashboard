@@ -1,0 +1,75 @@
+{{ template "layout/main.html" . }}
+
+{{ define "pageTitle" }}{{.title}} | View Country Detail {{ end}}
+
+{{ define "content" }}
+<section class="content-header">
+    <h1>
+        <i class="fa fa-align-justify"></i>
+        <strong>{{ .data.user_fullname}} - User Detail</strong>
+    </h1>
+    <div class="pull-right"><a href="{{urlfor "AccountController.Index"}}"><strong> Back to user List</strong></a></div>
+    <br>
+</section>
+<section class="content">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="box">   
+            <br>
+            <div class="card-body">
+                
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>User Id : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label">{{.data.user_id}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>User Full Name : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label">{{.data.user_fullname}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>User Name : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label"><strong>{{.data.username}}</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Email Id : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label">{{.data.email}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Status : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label">{{.data.status}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Created By : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label">{{.data.created_by}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Updated By : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label">{{.data.updated_by}}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{urlfor "AccountController.EditGet" ":id" .data.user_id}}" class="btn btn-danger" style="margin:20px;">Update</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{{ end }}

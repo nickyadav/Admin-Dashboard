@@ -1,0 +1,84 @@
+{{ template "layout/main.html" . }} {{ define "pageTitle" }}App List{{ end}} {{ define "content" }}
+<section class="content-header">
+        <h1>
+                <i class="fa fa-align-justify"></i> <strong> App List</strong> 
+        </h1>
+        <div class="pull-right"><a href="{{urlfor "AppController.NewGet"}}"><strong> Create App</strong></a></div>
+    <br>
+    </section>
+<section class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="box">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row pull-right">
+                                {{ $page := len .data.Data }} 
+                                {{if gt .page.Current 0}}
+                                {{ if or (eq $page 0) (gt $page 0)}}
+                                        <div class="col-sm-4" style="float: left; display: block;">
+                                            <a href="{{urlfor "AppController.Index" "page" .page.Previous}}" ><input type="submit" class="btn btn-primary px-4" value="<" /></a>                                                                                    
+                                        </div>
+                                    {{ end }}
+                                {{ end }}
+                                {{if or (gt $page 9) (gt $page 24) (gt $page 99)}}
+                                    <div class="col-sm-4" style="float: left; display: block;">
+                                        <a href="{{urlfor "AppController.Index" "page" .page.Next}}" ><input type="submit" class="btn btn-primary px-4" value=">" /></a>                                                                                    
+                                    </div> 
+                                {{end}}
+                            </div>
+                            <br><br>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>App Id</th>
+                                        <th>App Name</th>
+                                        <th>Gateway App Id</th>
+                                        <th>Gateway Name</th>
+                                        <th>Country</th>
+                                        <th>Currency</th>
+                                        <th>Total Question</th>
+                                        <th>status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{if .data.Data }} {{range $key, $val := .data.Data}}
+                                    <tr>
+                                        <td>{{$val.app_id}}</td>
+                                        <td>{{$val.app_name}}</td>
+                                        <td>{{$val.gateway_app_id}}</td>
+                                        <td>{{$val.gateway_name}}</td>
+                                        <td>{{$val.country}}</td>
+                                        <td>{{$val.currency}}</td>
+                                        <td>{{$val.total_question}}</td>
+                                        <td>{{$val.status}}</td>
+                                        <td>
+                                            <a href="{{urlfor "AppController.View" ":id" $val.app_id}}">
+                                                <i class="fa fa-eye"></i>
+                                            </a> |
+                                            <a href="{{urlfor "AppController.EditGet" ":id" $val.app_id}}">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {{end}} {{else}}
+                                    <tr>
+                                        <td colspan="7" class="alert-danger text-center">
+                                            <h2>App Not Found!</h2>
+                                        </td>
+                                    </tr>
+                                    {{end}}
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

@@ -1,0 +1,85 @@
+{{ template "layout/main.html" . }}
+
+{{ define "pageTitle" }}{{.title}} | View App Detail {{ end}}
+
+{{ define "content" }}
+<section class="content-header">
+    <h1>
+        <i class="fa fa-align-justify"></i>
+        <strong> App View</strong>
+    </h1>
+    <div class="pull-right"><a href="{{urlfor "AppController.Index"}}"><strong> Back to App List</strong></a></div>
+    <br>
+</section>
+<section class="content">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="box">
+            <br>    
+            <div class="card-body">
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"> <strong>App Name : </strong></label>
+                    <div class="col-md-9">
+                            <p class="form-control-label">
+                                <strong>{{.data.app_name}}</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Gateway App ID : </strong></label>
+                    <div class="col-md-9">
+                            <strong>{{.data.gateway_app_id}}</strong>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Gateway App Name : </strong></label>
+                    <div class="col-md-9">
+                            <p class="form-control-label">
+                                    <strong>{{.data.gateway_name}}</strong>
+                                </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Country : </strong></label>
+                    <div class="col-md-9">
+                            <p class="form-control-label">
+                                    <strong>{{.data.country}}</strong>
+                                </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Currency : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label">{{.data.currency}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Language : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-static">{{.data.created_by}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                        <label class="col-md-3 form-control-label text-right"><strong>Total Question : </strong></label>
+                        <div class="col-md-9">
+                            <p class="form-control-label">{{.data.total_question}}</p>
+                        </div>
+                    </div>
+                <div class="row">
+                    <label class="col-md-3 form-control-label text-right"><strong>Status : </strong></label>
+                    <div class="col-md-9">
+                        <p class="form-control-label">{{.data.status}}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{urlfor "AppController.EditGet" ":id" .data.app_id}}" class="btn btn-danger" style="margin:20px;">Update</a>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{{ end }}

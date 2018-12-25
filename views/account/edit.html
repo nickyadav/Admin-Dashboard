@@ -1,0 +1,87 @@
+{{ template "layout/main.html" . }}
+
+{{ define "pageTitle" }}{{.title}} | Edit User Detail {{ end}}
+
+{{ define "content" }}
+<section class="content">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <form method="post">
+                <div class="card-header">
+                    <strong><h1>{{ .data.user_fullname}} - User Detail</h1></strong>
+                    <div class="pull-right"><a href="{{urlfor "AccountController.Index"}}"> Back to User List</a></div>
+                </div>
+                <br>
+                <div class="box box-primary">
+                <div class="card-body">
+                    <div class="box-body">
+                    {{ .xsrfdata }}
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="user_fullname">User Full Name</label>
+                                <input type="text" class="form-control" maxlength="200" required id="user_fullname"
+                                       name="user_fullname" placeholder="Enter User Full Name"
+                                       value="{{ .data.user_fullname }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="username">User Name</label>
+                                <input type="text" class="form-control" maxlength="50" required id="username"
+                                        name="username" placeholder="Enter User Name" value="{{ .data.username }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="emailid">User Email Id</label>
+                                <input type="email" class="form-control" maxlength="200" required id="emailid"
+                                       name="emailid" placeholder="Enter Email Id" value="{{ .data.email }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" maxlength="20" required id="password"
+                                        name="password" placeholder="Enter Password" value="{{ .data.password }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="confirmpassword">Confirm Password</label>
+                                <input type="password" class="form-control" maxlength="20" required id="confirmpassword"
+                                        name="confirmpassword" placeholder="Confirm Password" value="{{ .data.confirmpassword }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="status" name="status">
+                                <option {{if eq .data.status "INPROGRESS"}}selected{{end}}>INPROGRESS</option>
+                                <option {{if eq .data.status "ACTIVE"}}selected{{end}}>ACTIVE</option>
+                                <option {{if eq .data.status "INACTIVE"}}selected{{end}}>INACTIVE</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save Changes
+                        </button>
+                        <!--<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>-->
+                    </div>
+            </div>
+            </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+{{ end }}

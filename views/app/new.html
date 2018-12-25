@@ -1,0 +1,141 @@
+{{ template "layout/main.html" . }} {{ define "pageTitle" }}Add New App{{ end}} {{ define "content" }}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Create App
+    </h1>
+    <div class="pull-right"><a href="{{urlfor "AppController.Index"}}"> Back to App List</a></div>
+    <br>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" method="POST" enctype="multipart/form-data">
+                    <div class="box-body">
+                        {{ .xsrfdata }}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="app_name">App Name</label>
+                                    <input type="text" class="form-control" maxlength="200" required id="app_name" name="app_name" placeholder="Enter App Name"
+                                        value="{{ .data.app_name }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="gateway_name">Gateway App Name</label>
+                                    <input type="text" class="form-control" maxlength="50" required id="gateway_name" name="gateway_name" placeholder="Enter Gateway App Name"
+                                        value="{{ .data.gateway_name }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="gateway_app_id">Gateway Id</label>
+                                    <input type="text" class="form-control" maxlength="200" required id="gateway_app_id" name="gateway_app_id" placeholder="Enter Gateway ID"
+                                        value="{{ .data.gateway_app_id }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="gateway_secret">Gateway App Secret</label>
+                                    <input type="text" class="form-control" maxlength="50" required id="gateway_secret" name="gateway_secret" placeholder="Enter Gateway App Secret"
+                                        value="{{ .data.gateway_secret }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="total_question">Total Question</label>
+                                    <input type="number" class="form-control" maxlength="50" required id="total_question" name="total_question" placeholder="Enter Total question"
+                                        value="{{ .data.total_question }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="otp_attempt">OTP Attempt</label>
+                                    <input type="number" class="form-control" maxlength="50" required id="otp_attempt" name="otp_attempt" placeholder="OTP Attempt"
+                                        value="{{ .data.otp_attempt }}">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="status">Status : </label>
+                                <select class="form-control default_border default_dropdownHeight" id="status" name="status">
+                                    <option value="INPROGRESS">INPROGRESS</option>
+                                    <option value="ACTIVE">ACTIVE</option>
+                                    <option value="INACTIVE">INACTIVE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <input type="text" class="form-control" maxlength="50" required id="country" name="country" placeholder="Enter Country Name"
+                                        value="{{ .data.country }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="currency">Currency</label>
+                                    <input type="text" class="form-control" maxlength="50" required id="currency" name="currency" placeholder="Currency" value="{{ .data.currency }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="language">Language</label>
+                                    <input type="text" class="form-control" maxlength="50" required id="language" name="language" placeholder="Language" value="{{ .data.language }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="app_icon">App Icon</label>
+                                    <input type="file" class="form-control" accept="image/*" id="app_icon" name="app_icon" placeholder="Enter App Icon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="privacy_policy">Privacy Policy : </label>
+                                    <textarea class="form-control" maxlength="500" required id="privacy_policy" rows="5" name="privacy_policy" placeholder="Enter Privacy Policy">{{ .data.privacy_policy }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="term_condition">Term Condition : </label>
+                                    <textarea class="form-control" maxlength="500" required id="term_condition" rows="5" name="term_condition" placeholder="Enter Term Condition">{{ .data.term_condition }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            <i class="fa fa-dot-circle-o"></i> Add New
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+
+        </div>
+
+        <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+{{ end }}
