@@ -82,23 +82,6 @@ func ConvertToViewDate(dt string) string {
 	return dateTime
 }
 
-func GetDateRange() {
-	startDate, _ := time.Parse("2006-01-02 15:04:05", "2018-08-08 15:48:11")
-	endDate, _ := time.Parse("2006-01-02 15:04:05", "2018-09-08 15:48:15")
-	beego.Info(startDate, " - ", endDate)
-	duration := endDate.Sub(startDate)
-	days := int(duration.Hours()/24) + 1
-	beego.Info(days)
-	for i := 0; i < days; {
-		if (i + 7) < days {
-			beego.Info("S : ", startDate.AddDate(0, 0, i).Format("2006-01-02"), " - E : ", startDate.AddDate(0, 0, i+6).Format("2006-01-02"))
-		} else {
-			beego.Info("S : ", startDate.AddDate(0, 0, i).Format("2006-01-02"), " - E : ", endDate.Format("2006-01-02"))
-		}
-		i = i + 7
-	}
-}
-
 func GetMD5Hash(input string) string {
 	hasher := md5.New()
 	hasher.Write([]byte(input))
