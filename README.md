@@ -12,6 +12,8 @@ To get started, you need the following:
 Golang : https://golang.org/
 Beego : https://beego.me/
 
+# NOTE: 
+I'm assuming you have pre-installed cockroachDB and know how to create database.
 
 To run this app you will have to install the dependencies first and then run the expo command as described below.
 
