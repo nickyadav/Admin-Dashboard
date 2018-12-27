@@ -39,9 +39,6 @@ func (c *AccountController) LoginPost() {
 			gs.Id = dbRes.Data[0]["user_id"].(string)
 			gs.Username = dbRes.Data[0]["username"].(string)
 			gs.Fullname = dbRes.Data[0]["user_fullname"].(string)
-			// gs.RoleID = dbRes.Data[0]["role_id"].(string)
-			// gs.RoleTitle = dbRes.Data[0]["role_title"].(string)
-			// gs.RoleName = dbRes.Data[0]["role_name"].(string)
 
 			c.SetSession("GlobalSession", models.StructToJSONStr(gs))
 			if r != "" {
@@ -194,7 +191,6 @@ func (c *AccountController) NewPost() {
 // @router /account/:id [get]
 func (c *AccountController) EditGet() {
 	beego.Info(c.Ctx.Input.Param(":id"))
-	//role := models.UserGetRoleDropDown()
 	result := models.UserGetById(c.Ctx.Input.Param(":id"))
 	if result.Rows > 0 {
 		c.Data["data"] = result.Data[0]
@@ -217,7 +213,6 @@ func (c *AccountController) EditPost() {
 	m["password"] = c.GetString("password")
 	m["confirmpassword"] = c.GetString("confirmpassword")
 	m["status"] = c.GetString("status")
-	//m["role_id"] = c.GetString("role_id")
 	c.Data["data"] = m
 	if m["password"] != m["confirmpassword"] {
 		flash.Error("Password didn't matched! Try again.")

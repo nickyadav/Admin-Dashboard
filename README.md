@@ -3,7 +3,7 @@ Dashboard example to understand the golang crud application with production leve
 
 # Technology Used:
 1) Back-end: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
-    Framework:  Beego is a RESTful HTTP framework for the rapid development of Go applications including APIs, web apps and backend services with integrated Go specific features such as interfaces and struct embedding.
+    Framework:  Beego is a RESTful HTTP framework for the rapid development of Go applications including APIs, web apps and back-end services with integrated Go specific features such as interfaces and struct embedding.
 2) Front-end: AdminLTE open dashboard integrated with golang back-end.
 
 # Getting Started
@@ -14,7 +14,7 @@ Beego : https://beego.me/
 
 # NOTE: 
 I'm assuming you have pre-installed cockroachDB and know how to create database.
-Refer db folder for the database name and tables, inorder to start the project.
+Refer db folder for the database tables.
 
 To run this app you will have to install the dependencies first and then run the expo command as described below.
 

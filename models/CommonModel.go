@@ -13,8 +13,6 @@ var err error
 var StoreString string
 
 //Constant for Cache
-var CACHE_KEY_COUNTRY_SINGLE string = "country_"
-var CACHE_KEY_COUNTRY_ALL string = "countries"
 
 var CACHE_SHORT_INTERVAL = 1 * time.Minute
 var CACHE_MEDIUM_INTERVAL = 5 * time.Minute
@@ -53,7 +51,6 @@ type GlobalSession struct {
 
 func init() {
 	bm, err = cache.NewCache("memory", `{"interval":3600}`)
-	//orm.RegisterModelWithPrefix("tbl_", new(RuleConfig))
 }
 
 func GetGlobalSession(ses string) GlobalSession {

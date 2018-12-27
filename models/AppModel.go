@@ -37,7 +37,6 @@ func AppAdd(app_name, gateway_app_id, gateway_name, gateway_secret, country, cur
 	num, err := o.Raw("INSERT INTO tbl_app "+
 		"(app_name, gateway_app_id, gateway_name, gateway_secret, country, currency, language, privacy_policy, term_condition, otp_attempt, app_icon, status, total_question, created_by, created_at, updated_by, updated_at) "+
 		"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,'admin',NOW(),'admin',NOW());", app_name, gateway_app_id, gateway_name, gateway_secret, country, currency, language, privacy_policy, term_condition, otp_attempt, app_icon, status, total_question).Values(&maps)
-	//beego.Info("Total Rows found : ", num)
 	if err != nil {
 		beego.Error(err)
 		eMsg = err.Error()
