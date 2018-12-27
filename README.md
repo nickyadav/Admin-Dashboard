@@ -14,6 +14,7 @@ Beego : https://beego.me/
 
 # NOTE: 
 I'm assuming you have pre-installed cockroachDB and know how to create database.
+Refer db folder for the database name and tables, inorder to start the project.
 
 To run this app you will have to install the dependencies first and then run the expo command as described below.
 
